@@ -1,0 +1,16 @@
+#container {
+    display: inline-grid;
+    grid-template-columns: repeat(16,1fr);
+    
+}
+
+#squares {
+    min-width: 30px;
+    min-height: 30px;
+    background-color: white;
+    border: 0.5px solid black;
+}
+
+/* #squares:hover{
+    background-color: cadetblue;
+} */
