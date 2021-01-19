@@ -21,6 +21,8 @@ function colorGrid(blocks){
 const dimension = document.getElementById("size");
 const squareWrapper = document.querySelector("#container");
 const resize = document.querySelector("#resize");
+const reset = document.querySelector("#reset");
+
 createGrid(16);
 const divs = document.querySelectorAll("div"); //select all created divs from createGrid();
 colorGrid(divs);
@@ -28,6 +30,13 @@ colorGrid(divs);
 resize.addEventListener("click", function(){ //event for clicking Resize button
     squareWrapper.innerHTML = "";
     createGrid(dimension.value);
-    const newdivs = document.querySelectorAll("div");
-    colorGrid(newdivs);
+    const resizedivs = document.querySelectorAll("div");
+    colorGrid(resizedivs);
+});
+
+reset.addEventListener("click", function(){
+    squareWrapper.innerHTML = "";
+    createGrid(16);
+    const resetdivs = document.querySelectorAll("div");
+    colorGrid(resetdivs);
 });
