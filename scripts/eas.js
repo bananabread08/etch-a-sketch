@@ -1,13 +1,16 @@
 function createGrid(size){
+    squareWrapper.textContent = "";
     for(let i = 0; i < Math.pow(size,2); i++){
         let gridSqr = document.createElement("div");
-        gridSqr.setAttribute("id", "squares");
+        gridSqr.classList.add("squares");
         squareWrapper.appendChild(gridSqr);
     }
     squareWrapper.style.setProperty(
         "grid-template-columns",
         `repeat(${size}, 1fr)`
     );
+    let divs = document.querySelectorAll("div");
+    colorGrid(divs);
 }  
 
 function colorGrid(blocks){
@@ -16,27 +19,27 @@ function colorGrid(blocks){
             div.style.backgroundColor = "cornflowerblue";
         });
     });
+
+    rainbow.addEventListener("click", function(){ //rainbow trails event
+        blocks.forEach(div => {
+            div.addEventListener("mouseenter", function(){
+                div.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            });
+        });
+    });
 }
 
 const dimension = document.getElementById("size");
 const squareWrapper = document.querySelector("#container");
 const resize = document.querySelector("#resize");
 const reset = document.querySelector("#reset");
+const rainbow = document.querySelector("#rainbow");
+createGrid(16); //default grid
 
-createGrid(16);
-const divs = document.querySelectorAll("div"); //select all created divs from createGrid();
-colorGrid(divs);
-
-resize.addEventListener("click", function(){ //event for clicking Resize button
-    squareWrapper.innerHTML = "";
+resize.addEventListener("click", () => { //event for clicking Resize button
     createGrid(dimension.value);
-    const resizedivs = document.querySelectorAll("div");
-    colorGrid(resizedivs);
 });
 
-reset.addEventListener("click", function(){
-    squareWrapper.innerHTML = "";
+reset.addEventListener("click", () => {; //reset to default grid    
     createGrid(16);
-    const resetdivs = document.querySelectorAll("div");
-    colorGrid(resetdivs);
 });
