@@ -16,7 +16,7 @@ function createGrid(size){
 function colorGrid(blocks){
     blocks.forEach(div => {
         div.addEventListener("mouseenter", function(){
-            div.style.backgroundColor = "cornflowerblue";
+            div.style.backgroundColor = "#306230";
         });
     });
 
